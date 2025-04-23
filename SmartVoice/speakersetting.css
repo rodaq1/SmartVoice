@@ -1,0 +1,62 @@
+body {
+    background-color: #101010;
+    color: white;
+    font-family: "Istok Web", sans-serif;
+    margin: 0;
+    padding: 2rem;
+  }
+  
+  .settings-container {
+    max-width: 600px;
+    margin: 0 auto;
+    margin-top: 20vh;
+    padding: 2rem;
+    background: #191919;
+    border-radius: 15px;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+  }
+  
+  .settings-container h1 {
+    text-align: center;
+    margin-bottom: 2rem;
+    color: lightgray;
+  }
+  
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  
+  label {
+    font-weight: bold;
+  }
+  
+  input[type="text"],
+  select {
+    padding: 10px;
+    border-radius: 8px;
+    border: none;
+    background: #2c2c2c;
+    color: white;
+  }
+  
+  input[type="range"] {
+    width: 100%;
+  }
+  
+  button {
+    padding: 10px;
+    background: lightgray;
+    color: black;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
+  
+  button:hover {
+    background: #e0b800;
+  }
+  

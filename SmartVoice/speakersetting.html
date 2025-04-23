@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="speakersetting.css">
+  <title>Nastavenie Speakera</title>
+</head>
+<body>
+  <div id="navbar-placeholder"></div>
+
+  <script>
+    fetch("navbar.html")
+      .then(res => res.text())
+      .then(data => {
+        document.getElementById("navbar-placeholder").innerHTML = data;
+      });
+  </script>
+
+  <main class="settings-container">
+    <h1>Nastavenia hlasového asistenta</h1>
+
+    <form>
+      <!-- Výber hlasu -->
+      <label for="voice">Typ hlasu:</label>
+      <select id="voice" name="voice">
+        <option value="male">Mužský</option>
+        <option value="female">Ženský</option>
+      </select>
+
+      <!-- Kľúčové slovo -->
+      <label for="keyword">Kľúčové slovo pre aktiváciu:</label>
+      <input type="text" id="keyword" name="keyword" placeholder="Napr. 'Hey SmartVoice'" />
+
+      <!-- Jazyk rozhrania -->
+      <label for="language">Jazyk:</label>
+      <select id="language" name="language">
+        <option value="sk">Slovenčina</option>
+        <option value="en">Angličtina</option>
+        <option value="de">Nemčina</option>
+      </select>
+
+      <!-- Hlasitosť -->
+      <label for="volume">Hlasitosť:</label>
+      <input type="range" id="volume" name="volume" min="0" max="100" value="50" />
+
+      <!-- Tlačidlo Uložiť -->
+      <button type="submit">Uložiť nastavenia</button>
+    </form>
+  </main>
+</body>
+</html>

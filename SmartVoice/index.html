@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="index.css" />
+  <title>SmartVoice</title>
+</head>
+<body>
+
+  <div id="navbar-placeholder"></div>
+
+  <script>
+    fetch("navbar.html")
+      .then(res => res.text())
+      .then(data => {
+        document.getElementById("navbar-placeholder").innerHTML = data;
+      });
+  </script>
+
+  <div class="container">
+    <div class="box_left">
+        <h1 style="font-family: 'Telegraf'; font-size: 2rem;">Tlačidlá? Zabudni</h1>
+        <p style="font-family: 'Roboto'; font-size: 1rem; color: #ccc;">
+          Povedz čo chceš a SmartVoice to urobí za teba.
+        </p>
+        
+    </div>
+  </div>
+
+  <section style="padding: 4rem 2rem; background-color: #111;">
+    <h2 style="text-align: center; margin-bottom: 2rem;">Ako to funguje</h2>
+    <div style="display: flex; flex-wrap: wrap; justify-content: space-around; gap: 2rem; color: #ccc;">
+      <div style="max-width: 250px;">
+        <h3>1. Povedz príkaz</h3>
+        <p>Aktivuj zariadenie jednoducho hlasom.</p>
+      </div>
+      <div style="max-width: 250px;">
+        <h3>2. Odozva v reálnom čase</h3>
+        <p>Systém okamžite reaguje na tvoje slová.</p>
+      </div>
+      <div style="max-width: 250px;">
+        <h3>3. Uži si automatizáciu</h3>
+        <p>Ovládaj svetlá, hudbu, alebo čokoľvek len chceš.</p>
+      </div>
+    </div>
+  </section>
+  
+
+
+
+
+
+</body>
+</html>

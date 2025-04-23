@@ -1,0 +1,120 @@
+@import url("https://fonts.googleapis.com/css2?family=Istok+Web:wght@400;700&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Istok Web", sans-serif;
+}
+
+#widget-container {
+    margin-top: 30vh; /* uprav podľa potreby (napr. 150px alebo 200px) */
+  }
+  
+
+body {
+  background-color: #101010;
+  color: white;
+  padding: 2rem;
+}
+
+/* Grid for multiple cards */
+.widget-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  justify-content: center;
+}
+
+/* Card styling */
+.card {
+  position: relative;
+  background: #191919;
+  border-radius: 20px;
+  overflow: hidden;
+  width: 100%;
+  max-width: 320px;
+  margin: auto;
+  transition: transform 0.3s;
+}
+
+.card:hover {
+  transform: scale(1.03);
+}
+
+.card::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  width: 100%;
+  height: 100%;
+  background: #e0b800;
+  transform: skewY(345deg);
+  transition: 0.5s;
+  z-index: 0;
+}
+
+.card:hover::before {
+  top: -70%;
+  transform: skewY(390deg);
+}
+
+
+.card.equipped {
+  border: 2px solid limegreen;
+  box-shadow: 0 0 10px limegreen;
+}
+
+.imgBox {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  padding-top: 20px;
+}
+
+.mouse {
+  height: 200px;
+  width: auto;
+}
+
+.contentBox {
+  z-index: 2;
+  padding: 20px;
+  text-align: center;
+}
+
+.contentBox h3 {
+  font-size: 18px;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+
+.price {
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 15px;
+}
+
+.equip-btn {
+  padding: 10px 30px;
+  color: black;
+  background: white;
+  border-radius: 30px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.card.equipped .equip-btn {
+  background: crimson;
+  color: white;
+}
+.widget-icon {
+    font-size: 100px;
+    color: white;
+    z-index: 1;
+  }
+  

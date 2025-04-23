@@ -1,0 +1,93 @@
+@import url('https://fonts.cdnfonts.com/css/telegraf');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: black;
+  font-family: 'Telegraf', sans-serif;
+  color: white;
+  font-size: clamp(1rem, 1vw, 2rem);
+}
+
+a {
+  text-decoration: none;
+  color: white;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.navbar_left {
+  font-size: 30px;
+  font-weight: bold;
+}
+
+.navbar_links {
+  display: flex;
+  gap: 1.5rem;
+}
+
+
+
+
+.navbar_links a {
+  text-decoration: none;
+  color: white;
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+.navbar_links a::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  height: 2px;
+  width: 0;
+  background-color: white;
+  transition: width 0.3s ease;
+}
+
+.navbar_links a:hover {
+  color: #cccccc;
+}
+
+.navbar_links a:hover::after {
+  width: 100%;
+}
+
+
+.menu-toggle {
+  display: none;
+  font-size: 2rem;
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+}
+
+@media (max-width: 700px) {
+  .menu-toggle {
+    display: flex;
+    float: right;
+  }
+
+  .navbar_links {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    margin-top: 1rem;
+  }
+
+  .navbar_links.active {
+    display: flex;
+  }
+}
+

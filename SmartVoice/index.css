@@ -1,0 +1,72 @@
+@import url('https://fonts.cdnfonts.com/css/telegraf');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: black;
+  font-family: 'Telegraf', sans-serif;
+  color: white;
+  font-size: clamp(1rem, 1vw, 2rem);
+}
+
+a {
+  text-decoration: none;
+  color: white;
+}
+
+
+
+
+.container {
+  background-image: url(background.jpg);
+  height: 60vh;
+  width: calc(100vw - 4rem);
+  display: flex;
+  margin-left: 2rem;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+} 
+
+.box_left {
+  margin-top: 20vh;
+  height: 25vh;
+  width: 200px;
+  background-color: rgba(31, 31, 31, 0.7);
+  border-radius: 20px;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.5);
+  padding-left: 1rem;
+  animation: fadeInUp 1s ease forwards;
+
+}
+
+    
+
+* {
+
+	box-sizing: border-box;
+}
+
+
+
+
+@media (max-width: 900px) {
+  .container {
+    background-position: 60% center;
+  }
+}
+
+@media (max-width: 600px) {
+  .container {
+    background-position: 70% center;
+  }
+}

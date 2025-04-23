@@ -1,0 +1,112 @@
+@import url('https://fonts.googleapis.com/css2?family=Istok+Web:wght@400;700&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Istok Web", sans-serif;
+}
+
+body {
+  background-color: #101010;
+  color: white;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 2rem;
+}
+
+.login-wrapper {
+  display: block;
+  margin: auto;
+  margin-top: 20vh;
+  background: #191919;
+  border-radius: 15px;
+  max-width: 500px;
+  width: 100%;
+  padding: 2rem 2.5rem;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.05);
+}
+
+.login-title {
+  text-align: center;
+  background-color: lightgray;
+  color: black;
+  font-size: 28px;
+  font-weight: bold;
+  border-radius: 10px;
+  padding: 1rem;
+  margin-bottom: 2rem;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.login-row {
+  position: relative;
+}
+
+.login-row input {
+  width: 100%;
+  padding: 0.8rem 0.8rem 0.8rem 3rem;
+  border: none;
+  border-radius: 8px;
+  background: #2c2c2c;
+  color: white;
+  font-size: 16px;
+}
+
+.login-row i {
+  position: absolute;
+  top: 50%;
+  left: 10px;
+  transform: translateY(-50%);
+  color: lightgray;
+  font-size: 18px;
+}
+
+.pass {
+  text-align: right;
+}
+
+.pass a {
+  color: lightgray;
+  text-decoration: none;
+}
+
+.pass a:hover {
+  text-decoration: underline;
+}
+
+.button input {
+  background-color: lightgray;
+  color: black;
+  font-weight: bold;
+  font-size: 18px;
+  padding: 0.8rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.button input:hover {
+  background-color: #e0b800;
+}
+
+.signup-link {
+  text-align: center;
+  color: #ccc;
+}
+
+.signup-link a {
+  color: #ffce00;
+  text-decoration: none;
+}
+
+.signup-link a:hover {
+  text-decoration: underline;
+}
