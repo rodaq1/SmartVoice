@@ -8,25 +8,23 @@
 }
 
 #widget-container {
-    margin-top: 30vh; /* uprav podľa potreby (napr. 150px alebo 200px) */
+    margin-top: 10vh; 
+    margin-bottom: 8vh;
   }
   
-
 body {
   background-color: #101010;
   color: white;
   padding: 2rem;
 }
 
-/* Grid for multiple cards */
 .widget-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
   gap: 2rem;
   justify-content: center;
 }
 
-/* Card styling */
 .card {
   position: relative;
   background: #191919;
@@ -118,3 +116,8 @@ body {
     z-index: 1;
   }
   
+@media (max-width: 963px){
+  #widget-container{
+    margin-top: 3vh;
+  }
+} 

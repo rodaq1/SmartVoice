@@ -22,6 +22,7 @@ a {
   padding: 1rem 2rem;
   width: 100%;
   box-sizing: border-box;
+  border-bottom: 3px solid white;
 }
 
 .navbar_left {

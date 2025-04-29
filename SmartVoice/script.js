@@ -3,7 +3,8 @@ const widgets = [
     { name: "Hodiny", iconClass: "fas fa-clock", equipped: false },
     { name: "Kalendár", iconClass: "fas fa-calendar-alt", equipped: false },
     { name: "Spotify", iconClass: "fab fa-spotify", equipped: false },
-    { name: "Doorbell", iconClass: "fas fa-door-open", equipped: false }
+    { name: "Doorbell", iconClass: "fas fa-door-open", equipped: false },
+    { name: "Notifikácie", iconClass: "fas fa-bell", equipped: false, }
   ];
   
   const container = document.getElementById("widget-container");

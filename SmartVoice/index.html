@@ -28,7 +28,7 @@
     </div>
   </div>
 
-  <section style="padding: 4rem 2rem; background-color: #111;">
+  <section style="padding: 4rem 2rem; background-color: #111;  border-top: 3px solid white">
     <h2 style="text-align: center; margin-bottom: 2rem;">Ako to funguje</h2>
     <div style="display: flex; flex-wrap: wrap; justify-content: space-around; gap: 2rem; color: #ccc;">
       <div style="max-width: 250px;">
@@ -46,7 +46,12 @@
     </div>
   </section>
   
-
+  <div id="footer-placeholder"></div>
+  <script>
+    fetch("footer.html")
+     .then(res => res.text())
+     .then(data => {document.getElementById("footer-placeholder").innerHTML = data})
+  </script>
 
 
 
