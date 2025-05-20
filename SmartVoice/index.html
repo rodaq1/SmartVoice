@@ -8,7 +8,7 @@
 </head>
 <body>
 
-  <div id="navbar-placeholder"></div>
+  <div id="navbar-placeholder" style="position: sticky; top: 0; z-index: 999;"></div>
 
   <script>
     fetch("navbar.html")
@@ -20,32 +20,86 @@
 
   <div class="container">
     <div class="box_left">
-        <h1 style="font-family: 'Telegraf'; font-size: 2rem;">Tlačidlá? Zabudni</h1>
-        <p style="font-family: 'Roboto'; font-size: 1rem; color: #ccc;">
-          Povedz čo chceš a SmartVoice to urobí za teba.
+        <h1 style="font-family: 'Telegraf'; font-size: 3.5vh; ">Tlačidlá? Zabudni</h1>
+        <p style="font-family: 'Roboto'; font-size: 2vh; color: #ccc;">
+          Zobuď asistenta, povedz príkaz a urobí to za teba.
         </p>
         
     </div>
   </div>
 
-  <section style="padding: 4rem 2rem; background-color: #111;  border-top: 3px solid white">
-    <h2 style="text-align: center; margin-bottom: 2rem;">Ako to funguje</h2>
-    <div style="display: flex; flex-wrap: wrap; justify-content: space-around; gap: 2rem; color: #ccc;">
-      <div style="max-width: 250px;">
-        <h3>1. Povedz príkaz</h3>
-        <p>Aktivuj zariadenie jednoducho hlasom.</p>
+  <section style="padding: 4rem 2rem; background-color: #111; border-top: 3px solid white; width: 100vw;">
+    <h2 style="text-align: center; margin-bottom: 3rem; font-size: 2.5rem;">Ako to funguje</h2>
+  
+    <div style="
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 3rem;
+      max-width: 1200px;
+      margin: 0 auto;
+      color: #eee;
+    ">
+      <div style="
+        background-color: rgba(255, 255, 255, 0.05);
+        padding: 2rem;
+        border-radius: 12px;
+        max-width: 300px;
+        text-align: center;
+        transition: transform 0.3s ease;
+      " onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+        <div style="font-size: 2.5rem; margin-bottom: 1rem;">🎤</div>
+        <h3 style="margin-bottom: 0.5rem;">1. Povedz príkaz</h3>
+        <p>Stačí vysloviť požiadavku. Žiadne prepínanie či klikanie.</p>
       </div>
-      <div style="max-width: 250px;">
-        <h3>2. Odozva v reálnom čase</h3>
-        <p>Systém okamžite reaguje na tvoje slová.</p>
+  
+      <div style="
+        background-color: rgba(255, 255, 255, 0.05);
+        padding: 2rem;
+        border-radius: 12px;
+        max-width: 300px;
+        text-align: center;
+        transition: transform 0.3s ease;
+      " onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+        <div style="font-size: 2.5rem; margin-bottom: 1rem;">⚡</div>
+        <h3 style="margin-bottom: 0.5rem;">2. Odozva v reálnom čase</h3>
+        <p>Reakcia systému je okamžitá – žiadne čakanie.</p>
       </div>
-      <div style="max-width: 250px;">
-        <h3>3. Uži si automatizáciu</h3>
-        <p>Ovládaj svetlá, hudbu, alebo čokoľvek len chceš.</p>
+  
+      <div style="
+        background-color: rgba(255, 255, 255, 0.05);
+        padding: 2rem;
+        border-radius: 12px;
+        max-width: 300px;
+        text-align: center;
+        transition: transform 0.3s ease;
+      " onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+        <div style="font-size: 2.5rem; margin-bottom: 1rem;">🏠</div>
+        <h3 style="margin-bottom: 0.5rem;">3. Uži si automatizáciu</h3>
+        <p>SmartVoice zvládne všetko – od svetiel po hudbu.</p>
       </div>
     </div>
   </section>
   
+  
+  <section style="padding: 4rem 2rem; background-color: #000;">
+    <h2 style="text-align: center; margin-bottom: 2rem;">Na čo všetko ho môžeš použiť?</h2>
+    <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 2rem; color: #ccc;">
+      <div style="max-width: 250px;">
+        <h3>🛋️ Smart Home</h3>
+        <p>Zapni svetlá, uprav kúrenie, zatiahni žalúzie – všetko hlasom.</p>
+      </div>
+      <div style="max-width: 250px;">
+        <h3>🎵 Hudba a médiá</h3>
+        <p>Pusti si obľúbený playlist, rádio alebo film bez dotyku.</p>
+      </div>
+      <div style="max-width: 250px;">
+        <h3>📅 Kalendár a pripomienky</h3>
+        <p>Naplánuj si deň, nastav pripomienku alebo spýtaj sa, čo máš dnes.</p>
+      </div>
+    </div>
+  </section>  
+
   <div id="footer-placeholder"></div>
   <script>
     fetch("footer.html")

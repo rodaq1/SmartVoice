@@ -34,9 +34,8 @@
   
   typewriterElements.forEach(element => {
     element.addEventListener('animationend', (event) => {
-      // Check if the finished animation is the typewriter one
       if (event.animationName === 'typewriter' || event.animationName === 'actual-text') {
-        element.classList.add('cursor-hidden'); // Add class to hide the cursor
+        element.classList.add('cursor-hidden');
       }
     });
   });

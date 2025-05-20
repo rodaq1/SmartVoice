@@ -4,10 +4,10 @@
 body {
   margin: 0;
   padding: 0;
-  background-color: black;
   font-family: 'Telegraf', sans-serif;
   color: white;
-  font-size: clamp(1rem, 1vw, 2rem);
+  font-size: clamp(1.2rem, 1vw, 2rem);
+  font-weight: 500;
 }
 
 a {
@@ -20,9 +20,11 @@ a {
   justify-content: space-between;
   align-items: center;
   padding: 1rem 2rem;
-  width: 100%;
+  width: 100vw;
   box-sizing: border-box;
   border-bottom: 3px solid white;
+  background-color: black;
+
 }
 
 .navbar_left {
