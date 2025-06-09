@@ -11,7 +11,7 @@
   <div id="navbar-placeholder"></div>
 
   <script>
-    fetch("navbar.html")
+    fetch("navbar.php")
       .then(res => res.text())
       .then(data => {
         document.getElementById("navbar-placeholder").innerHTML = data;
@@ -20,14 +20,15 @@
 
   <div class="login-wrapper">
     <div class="login-title"><span>Prihlásenie</span></div>
-    <form action="#">
+    <!-- FORM s action na login.php a method POST -->
+    <form action="login.php" method="POST">
       <div class="login-row">
         <i class="fas fa-user"></i>
-        <input type="text" placeholder="Email alebo tel.č." required />
+        <input name="emailOrPhone" type="text" placeholder="Email alebo tel.č." required />
       </div>
       <div class="login-row">
         <i class="fas fa-lock"></i>
-        <input type="password" placeholder="Heslo" required />
+        <input name="password" type="password" placeholder="Heslo" required />
       </div>
       <div class="pass"><a href="#">Zabudli ste heslo?</a></div>
       <div class="login-row button">
@@ -36,11 +37,23 @@
       <div class="signup-link">Nemáte účet? <a href="register.html">Zaregistrujte sa</a></div>
     </form>
   </div>
+
+  <footer style="
+    width: 100%;
+    height: 60px;
+    border-top: 1px solid white;
+    background-color: #000;
+    color: #aaa;
+    text-align: center;
+    line-height: 60px;
+    font-size: 0.9rem;
+    position: relative;
+    z-index: 10;
+    margin-top: 8.8%;
+  ">
+    &copy; 2025 SmartVoice | 
+    <a href="privacy.html" style="color: #aaa; text-decoration: none;">Nyehehehehehhehe</a> | 
+    <a href="terms.html" style="color: #aaa; text-decoration: none;">catssssssssssss</a>
+  </footer>
 </body>
-<div id="footer-placeholder"></div>
-<script>
-  fetch("footer.html")
-   .then(res => res.text())
-   .then(data => {document.getElementById("footer-placeholder").innerHTML = data})
-</script>
 </html>

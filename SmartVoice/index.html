@@ -3,15 +3,15 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="index.css" />
   <title>SmartVoice</title>
 </head>
 <body>
 
   <div id="navbar-placeholder" style="position: sticky; top: 0; z-index: 999;"></div>
+  <link rel="stylesheet" href="index.css" />
 
   <script>
-    fetch("navbar.html")
+    fetch("navbar.php")
       .then(res => res.text())
       .then(data => {
         document.getElementById("navbar-placeholder").innerHTML = data;
@@ -76,7 +76,7 @@
       " onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
         <div style="font-size: 2.5rem; margin-bottom: 1rem;">🏠</div>
         <h3 style="margin-bottom: 0.5rem;">3. Uži si automatizáciu</h3>
-        <p>SmartVoice zvládne všetko – od svetiel po hudbu.</p>
+        <p>SmartVoice zvládne všetko – od informácií po hudbu.</p>
       </div>
     </div>
   </section>
@@ -86,26 +86,37 @@
     <h2 style="text-align: center; margin-bottom: 2rem;">Na čo všetko ho môžeš použiť?</h2>
     <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 2rem; color: #ccc;">
       <div style="max-width: 250px;">
-        <h3>🛋️ Smart Home</h3>
-        <p>Zapni svetlá, uprav kúrenie, zatiahni žalúzie – všetko hlasom.</p>
+        <h3>🛋️ Vedomosti</h3>
+        <p>Opýtaj sa vedomostnú otázku v slovenčine alebo angličtine a SmartVoice ti odpovie.</p>
       </div>
       <div style="max-width: 250px;">
         <h3>🎵 Hudba a médiá</h3>
-        <p>Pusti si obľúbený playlist, rádio alebo film bez dotyku.</p>
+        <p>Pusti si obľúbený playlist bez dotyku.</p>
       </div>
       <div style="max-width: 250px;">
-        <h3>📅 Kalendár a pripomienky</h3>
-        <p>Naplánuj si deň, nastav pripomienku alebo spýtaj sa, čo máš dnes.</p>
+        <h3>🕒 Čas a počasie</h3>
+        <p>Opýtaj sa na čas či počasie kdekoľvek na svete a odpoveď dostaneš ihneď.</p>
       </div>
     </div>
   </section>  
 
-  <div id="footer-placeholder"></div>
-  <script>
-    fetch("footer.html")
-     .then(res => res.text())
-     .then(data => {document.getElementById("footer-placeholder").innerHTML = data})
-  </script>
+  <footer style="
+  width: 100%;
+  height: 60px;
+  border-top: 1px solid white;
+  background-color: #000;
+  color: #aaa;
+  text-align: center;
+  line-height: 60px;
+  font-size: 0.9rem;
+  position: relative;
+  z-index: 10;
+">
+  &copy; 2025 SmartVoice | 
+  <a href="privacy.html" style="color: #aaa; text-decoration: none;">Nyehehehehehhehe</a> | 
+  <a href="terms.html" style="color: #aaa; text-decoration: none;">catssssssssssss</a>
+</footer>
+
 
 
 

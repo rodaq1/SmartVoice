@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="sk">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Párovanie zariadenia – SmartVoice</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet" />
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Istok+Web:wght@400;700&display=swap');
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Istok Web", sans-serif;
+    }
+
+    body {
+      background-color: #101010;
+      color: white;
+
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+    }
+
+    main {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 80vh;
+
+    }
+
+    .pair-wrapper {
+      background: #191919;
+      border-radius: 15px;
+      max-width: 400px;
+      width: 100%;
+      padding: 2rem 2.5rem;
+      box-shadow: 0 0 10px rgba(255, 255, 255, 0.05);
+      text-align: center;
+    }
+
+    .pair-title {
+      background-color: lightgray;
+      color: black;
+      font-size: 28px;
+      font-weight: bold;
+      border-radius: 10px;
+      padding: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .instructions {
+      font-size: 1rem;
+      color: #ccc;
+      margin-bottom: 1.5rem;
+    }
+
+    .code-input {
+      letter-spacing: 1.2rem;
+      font-size: 2.5rem;
+      font-weight: 700;
+      background: #2c2c2c;
+      border-radius: 8px;
+      border: none;
+      color: white;
+      width: 100%;
+      padding: 0.5rem 1rem;
+      text-align: center;
+      outline: none;
+      font-family: monospace;
+    }
+
+    .code-input::-webkit-inner-spin-button,
+    .code-input::-webkit-outer-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+
+    .button input {
+      margin-top: 2rem;
+      background-color: lightgray;
+      color: black;
+      font-weight: bold;
+      font-size: 18px;
+      padding: 0.8rem;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+      width: 100%;
+    }
+
+    .button input:hover {
+      background-color: #e0b800;
+    }
+
+    .error-message {
+      color: #ff4c4c;
+      margin-top: 1rem;
+      font-weight: 600;
+      display: none;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="navbar-placeholder" style="position: sticky; top: 0; z-index: 999;"></div>
+  <script src="https://unpkg.com/mqtt/dist/mqtt.min.js"></script>
+
+  <script>
+    fetch("navbar.php")
+      .then(res => res.text())
+      .then(data => {
+        document.getElementById("navbar-placeholder").innerHTML = data;
+      });
+
+    const client = mqtt.connect("ws://localhost:9001");
+
+    client.on("connect", () => {
+      console.log("✅ MQTT pripojené po OK");
+      client.subscribe("smartvoice/pairing/status", (err) => {
+        if (err) {
+          console.error("❌ MQTT subscribe error:", err);
+          return;
+        }
+        console.log("🟢 Subscribed na smartvoice/pairing/status");
+      });
+    });
+
+    client.on("message", (topic, message) => {
+      try {
+        const data = JSON.parse(message.toString());
+        console.log("📥 MQTT správa prijatá:", data);
+        if (data.status === "paired" && data.username && data.mirror_id) {
+          console.log("📩 MQTT Párovanie prijaté:", data);
+
+          fetch("pairing_handler.php", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(data)
+          })
+            .then(res => res.text())
+            .then(response => {
+              console.log("💾 PHP odpoveď:", response);
+
+            })
+            .catch(err => console.error("❗ Chyba pri fetchi:", err));
+        }
+        const config = {
+          status: "paired",
+          weather_widget: true,
+          clock_widget: true,
+          calendar_widget: false,
+          spotify_widget: true,
+          doorbell_widget: false,
+          speaker_gender: "male",
+          keyword: "smart",
+          language: "sk",
+          volume: 75
+        };
+
+        const configTopic = `smartvoice/mirror/mirror1/config`;
+
+        client.publish(configTopic, JSON.stringify(config), (err) => {
+          if (err) {
+            console.error("Chyba pri odosielaní konfigurácie:", err);
+          } else {
+            console.log("Konfigurácia odoslaná na topic", configTopic);
+          }
+        });
+        fetch("save_config.php", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({
+            mirror_id: data.mirror_id,
+            config: config
+          })
+        })
+          .then(res => res.text())
+          .then(response => {
+            console.log("📝 Odpoveď z PHP (save_config):", response);
+            if (response.includes("success")) {
+              window.location.href = 'widget.php';
+            } else {
+              console.error("❗ Chyba pri ukladaní konfigurácie:", response);
+            }
+          })
+          .catch(err => console.error("❗ Chyba pri ukladaní configu:", err));
+      } catch (e) {
+        console.error("Nevalidný JSON z MQTT:", e);
+      }
+    });
+  </script>
+  <main>
+    <div class="pair-wrapper">
+      <div class="pair-title">Párovanie zariadenia</div>
+      <p class="instructions">Zadajte 6-ciferný kód, ktorý sa zobrazuje na vašom zariadení</p>
+      <form id="pair-form">
+        <input type="text" maxlength="6" pattern="\d{6}" inputmode="numeric" autocomplete="one-time-code"
+          placeholder="000000" class="code-input" id="pair-code" required />
+        <div class="button">
+          <input type="submit" value="Párovať" />
+        </div>
+        <div class="error-message" id="error-message">Neplatný kód. Skúste znova.</div>
+      </form>
+    </div>
+    <script>
+      const form = document.getElementById('pair-form');
+      const codeInput = document.getElementById('pair-code');
+      const errorMessage = document.getElementById('error-message');
+
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const code = codeInput.value.trim();
+
+        if (/^\d{6}$/.test(code)) {
+          errorMessage.style.display = 'none';
+
+          const response = await fetch('pair.php', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/x-www-form-urlencoded'
+            },
+            body: 'code=' + encodeURIComponent(code)
+          });
+
+          const result = await response.text();
+
+          if (result.includes("OK")) {
+            console.log("✅ Párovanie úspešné:", result);
+            alert("Zariadenie úspešne spárované! Môžete začať používať SmartVoice.");
+          } else {
+            errorMessage.textContent = result;
+            errorMessage.style.display = 'block';
+          }
+        } else {
+          errorMessage.textContent = "Zadajte platný 6-ciferný kód.";
+          errorMessage.style.display = 'block';
+        }
+      });
+
+    </script>
+  </main>
+  <footer style="
+  width: 100%;
+  height: 60px;
+  border-top: 1px solid white;
+  background-color: #000;
+  color: #aaa;
+  text-align: center;
+  line-height: 60px;
+  font-size: 0.9rem;
+  position: relative;
+  z-index: 10;
+  margin-top: 2.2%;
+">
+    &copy; 2025 SmartVoice |
+    <a href="privacy.html" style="color: #aaa; text-decoration: none;">Nyehehehehehhehe</a> |
+    <a href="terms.html" style="color: #aaa; text-decoration: none;">catssssssssssss</a>
+  </footer>
+</body>
+
+</html>
