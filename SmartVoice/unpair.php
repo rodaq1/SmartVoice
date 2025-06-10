@@ -7,7 +7,7 @@ if (!isset($_SESSION['user_id'])) {
     exit;
 }
 
-$mysqli = new mysqli("localhost", "root", "", "smartvoice_db");
+$mysqli = new mysqli("localhost", "admin", "admin", "smartvoice_db");
 
 if ($mysqli->connect_error) {
     http_response_code(500);

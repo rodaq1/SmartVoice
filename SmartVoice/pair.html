@@ -119,7 +119,7 @@
         document.getElementById("navbar-placeholder").innerHTML = data;
       });
 
-    const client = mqtt.connect("ws://localhost:9001");
+    const client = mqtt.connect("ws://192.168.0.201:9001");
 
     client.on("connect", () => {
       console.log("✅ MQTT pripojené po OK");

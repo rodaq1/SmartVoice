@@ -15,10 +15,9 @@ if (!$data || !isset($data['mirror_id']) || !isset($data['config'])) {
 $mirror_id = $data['mirror_id'];
 $config = json_encode($data['config']);
 
-// ✅ Tu si nastav vlastné pripojenie k DB
 $servername = "localhost";
-$username = "root";
-$password = "";
+$username = "admin";
+$password = "admin";
 $dbname = "smartvoice_db";
 
 $conn = new mysqli($servername, $username, $password, $dbname);

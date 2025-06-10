@@ -13,7 +13,7 @@ if (!isset($data["mirror_id"], $data["username"], $data["status"]) || $data["sta
 $mirror_id = $data["mirror_id"];
 $username = $data["username"];
 
-$mysqli = new mysqli("localhost", "root", "", "smartvoice_db");
+$mysqli = new mysqli("localhost", "admin", "admin", "smartvoice_db");
 if ($mysqli->connect_error) {
     http_response_code(500);
     echo json_encode(["error" => "Chyba pripojenia k DB."]);

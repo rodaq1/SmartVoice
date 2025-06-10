@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-$conn = new mysqli('localhost', 'root', '', 'smartvoice_db');
+$conn = new mysqli('localhost', 'admin', 'admin', 'smartvoice_db');
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }

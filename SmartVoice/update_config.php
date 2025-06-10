@@ -52,7 +52,7 @@ if ($updateStmt->execute()) {
 
 require('phpMQTT.php'); 
 
-$server = 'localhost';  
+$server = '192.168.0.201';  
 $port = 1883;                  
 $username = '';       
 $password = '';       

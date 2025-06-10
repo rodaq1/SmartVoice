@@ -10,7 +10,7 @@ if (!isset($_POST['code']) || !isset($_SESSION['user_id'])) {
 $code = $_POST['code'];
 $user_id = $_SESSION['user_id'];
 
-$conn = new mysqli("localhost", "root", "", "smartvoice_db");
+$conn = new mysqli("localhost", "admin", "admin", "smartvoice_db");
 if ($conn->connect_error) {
   http_response_code(500);
   echo "Chyba DB pripojenia.";
@@ -37,11 +37,22 @@ $payload = json_encode([
   "user" => $name
 ]);
 
-$topic = "smartvoice/pair";
-$cmd = "mosquitto_pub -h localhost -t " . escapeshellarg($topic) . " -m " . '"' . addcslashes($payload, '"\\') . '"';
+require('phpMQTT.php');
 
+    $server = '192.168.0.201';      
+    $port = 1883;             
+    $client_id = uniqid();      
 
-exec($cmd, $output, $return_var);
+    $mqtt = new Bluerhinos\phpMQTT($server, $port, $client_id);
+    if ($mqtt->connect(true, NULL, '', '')) {
+      $topic = 'smartvoice/pair';
+      
+      $mqtt->publish($topic, $payload, 0); 
+      $mqtt->close();
+  } else {
+      error_log("❌ Nepodarilo sa pripojiť na MQTT broker.");
+  }
+
 
 
 if ($return_var === 0) {

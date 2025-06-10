@@ -6,7 +6,7 @@ if (!isset($_SESSION['user_id'])) {
     exit();
 }
 
-$conn = new mysqli('localhost', 'root', '', 'smartvoice_db');
+$conn = new mysqli('localhost', 'admin', 'admin', 'smartvoice_db');
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
@@ -36,7 +36,7 @@ if ($conn->query($sql) === TRUE) {
     // 🟢 MQTT PART STARTS HERE
     require('phpMQTT.php'); // cesta podľa tvojho umiestnenia
 
-    $server = 'localhost';      // MQTT broker host (napr. 'localhost' alebo IP)
+    $server = '192.168.0.201';      // MQTT broker host (napr. 'localhost' alebo IP)
     $port = 1883;               // Port (default 1883)
     $client_id = uniqid();      // Unikátne ID klienta
 

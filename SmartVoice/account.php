@@ -2,12 +2,11 @@
 session_start();
 
 if (!isset($_SESSION['user_id'])) {
-  header('Location: login.html'); // ak nie je prihlásený, presmeruj
+  header('Location: login.html'); 
   exit();
 }
 
-// Pripojenie k DB (upravi podľa tvojich údajov)
-$conn = new mysqli('localhost', 'root', '', 'smartvoice_db');
+$conn = new mysqli('localhost', 'admin', 'admin', 'smartvoice_db');
 if ($conn->connect_error) {
   die("Connection failed: " . $conn->connect_error);
 }
@@ -19,7 +18,6 @@ $result = $conn->query($sql);
 if ($result && $result->num_rows === 1) {
   $user = $result->fetch_assoc();
 } else {
-  // Ak sa nepodarí načítať používateľa, presmeruj na login alebo chybu
   header('Location: login.html');
   exit();
 }
@@ -142,7 +140,7 @@ $conn->close();
   </div>
   <script src="https://unpkg.com/mqtt/dist/mqtt.min.js"></script>
   <script>
-    const brokerUrl = 'ws://localhost:9001';
+    const brokerUrl = 'ws://192.168.0.201:9001';
 
     const client = mqtt.connect(brokerUrl);
 
